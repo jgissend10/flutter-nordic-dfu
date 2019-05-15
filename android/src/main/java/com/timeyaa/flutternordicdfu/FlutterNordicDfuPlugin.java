@@ -76,7 +76,9 @@ public class FlutterNordicDfuPlugin implements MethodCallHandler {
     private void startDfu(String address, @Nullable String name, String filePath, Result result) {
         DfuServiceInitiator starter = new DfuServiceInitiator(address)
                 .setZip(filePath)
-                .setKeepBond(true);
+                .setForeground(false)
+                .setKeepBond(true)
+                .setNumberOfRetries(3);
         if (name != null) {
             starter.setDeviceName(name);
         }
